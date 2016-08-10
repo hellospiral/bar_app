@@ -19,9 +19,9 @@ export class AppComponent {
   public kegs: Keg[];
   constructor(){
     this.kegs = [
-      new Keg("Whiskey", "Jack Daniels", "$12.95", "70%", 0),
-      new Keg("Ale", "Jack Daniels", "$11.95", "75%", 1),
-      new Keg("Beer", "Heineken", "$10.95", "80%", 3)
+      new Keg("Whiskey", "Jack Daniels", 12.95, "70%", 0),
+      new Keg("Ale", "Jack Daniels", 11.95, "75%", 1),
+      new Keg("Beer", "Heineken", 10.95, "80%", 3)
     ];
   }
   kegWasSelected(clickedKeg: Keg): void {

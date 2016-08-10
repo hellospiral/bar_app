@@ -34,10 +34,10 @@ export class KegListComponent {
     this.selectedKeg = clickedKeg;
     this.onKegSelect.emit(clickedKeg);
   }
-  addKeg(args: string): void {
-    console.log(this);
+  addKeg(args: string[]): void {
     this.kegList.push(
-      new Keg(args, "Jack Daniels", "$12.95", "70%", this.kegList.length)
+      new Keg(args[0], args[1], parseInt(args[2]), args[3], this.kegList.length)
     );
+    console.log(this);
   }
 }

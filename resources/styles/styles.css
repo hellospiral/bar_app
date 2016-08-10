@@ -18,3 +18,12 @@ h1 {
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
+table td {
+  width: 200px;
+  text-align: center;
+}
+
+#input-form {
+  border-top: 1px dashed grey;
+}
