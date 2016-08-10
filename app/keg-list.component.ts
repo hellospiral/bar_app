@@ -18,6 +18,7 @@ import { RemainingPipe } from './remaining.pipe';
   </select>
   <keg-display *ngFor="#currentKeg of kegList | remaining:selectedRemaining" (click)="kegClicked(currentKeg)"
     [class.selected]="currentKeg === selectedKeg"
+    [class.red]="currentKeg.isExpensive() === true"
     [keg]="currentKeg">
   </keg-display>
   <edit-keg-details *ngIf="selectedKeg" [keg]="selectedKeg">
@@ -45,7 +46,6 @@ export class KegListComponent {
     this.kegList.push(
       new Keg(args[0], args[1], parseInt(args[2]), args[3], this.kegList.length)
     );
-    console.log(this);
   }
   onChange(optionFromMenu) {
     this.selectedRemaining = optionFromMenu;

@@ -27,3 +27,7 @@ table td {
 #input-form {
   border-top: 1px dashed grey;
 }
+
+keg-display.red table td:nth-child(3) {
+  color: red;
+}
