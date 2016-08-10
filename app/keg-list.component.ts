@@ -3,14 +3,20 @@ import { KegComponent } from './keg.component';
 import { Keg } from './keg.model';
 import { EditKegDetailsComponent} from './edit-keg-details.component';
 import { NewKegComponent } from './new-keg.component';
+import { RemainingPipe } from './remaining.pipe';
 
 @Component({
   selector: 'keg-list',
   inputs: ['kegList'],
   outputs: ['onKegSelect'],
   directives: [KegComponent, EditKegDetailsComponent, NewKegComponent],
+  pipes: [RemainingPipe],
   template: `
-  <keg-display *ngFor="#currentKeg of kegList" (click)="kegClicked(currentKeg)"
+  <select (change)="onChange($event.target.value)">
+    <option value="lessThan10">Show kegs with less than 10 pints</option>
+    <option selected value="all">Show All Kegs</option>
+  </select>
+  <keg-display *ngFor="#currentKeg of kegList | remaining:selectedRemaining" (click)="kegClicked(currentKeg)"
     [class.selected]="currentKeg === selectedKeg"
     [keg]="currentKeg">
   </keg-display>
@@ -26,6 +32,7 @@ export class KegListComponent {
   public kegList: Keg[];
   public onKegSelect: EventEmitter<Keg>;
   public selectedKeg: Keg;
+  public selectedRemaining: string = "all";
   constructor() {
     this.onKegSelect = new EventEmitter();
   }
@@ -39,5 +46,8 @@ export class KegListComponent {
       new Keg(args[0], args[1], parseInt(args[2]), args[3], this.kegList.length)
     );
     console.log(this);
+  }
+  onChange(optionFromMenu) {
+    this.selectedRemaining = optionFromMenu;
   }
 }
