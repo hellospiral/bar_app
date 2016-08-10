@@ -11,3 +11,10 @@ h1 {
   margin-bottom: 30px;
   border-top: 1px solid grey;
 }
+
+.add-button {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
