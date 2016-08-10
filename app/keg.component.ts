@@ -20,6 +20,12 @@ import { Keg } from './keg.model';
         <td>
           <h3>{{ keg.alcohol }}</h3>
         </td>
+        <td>
+          <h3>Remaining: {{ keg.pints }}</h3>
+        </td>
+        <td>
+          <button (click)="sellPint(keg)" class="btn btn-primary">Sell Pint</button>
+        </td>
       </tr>
     </table>
   `
@@ -27,4 +33,7 @@ import { Keg } from './keg.model';
 
 export class KegComponent {
   public keg: Keg;
+  sellPint(keg: Keg) {
+    keg.pints -= 1;
+  }
 }
